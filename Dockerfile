@@ -3,7 +3,7 @@ FROM debian:stretch-slim
 
 LABEL maintainer="Ohze JSC <thanhbv@sandinh.net>"
 
-ARG VERSION_STR=varnish40
+ARG VERSION_STR=varnish41
 ARG BUILD_PACKAGES="curl apt-transport-https gnupg2"
 
 COPY docker-entrypoint.sh /
