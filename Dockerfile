@@ -6,8 +6,6 @@ LABEL maintainer="Ohze JSC <thanhbv@sandinh.net>"
 ARG VERSION_STR=varnish40
 ARG BUILD_PACKAGES="curl apt-transport-https gnupg2"
 
-COPY docker-entrypoint.sh /
-
 # https://packagecloud.io/varnishcache/varnish40/install#manual
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
@@ -19,8 +17,10 @@ deb-src https://packagecloud.io/varnishcache/$VERSION_STR/debian/ stretch main" 
     apt-get update && apt-get install -y \
         varnish && \
     apt-get purge -y --auto-remove $BUILD_PACKAGES && \
-    rm -rf /var/lib/apt/lists/* && \
-    chmod +x /docker-entrypoint.sh
+    rm -rf /var/lib/apt/lists/*
+
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT  ["/docker-entrypoint.sh"]
 
