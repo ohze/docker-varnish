@@ -18,9 +18,9 @@ deb-src https://packagecloud.io/varnishcache/$VERSION_STR/debian/ stretch main" 
         varnish && \
     apt-get purge -y --auto-remove $BUILD_PACKAGES && \
     rm -rf /var/lib/apt/lists/* && \
-    # we removed apt-transport-https so we mv varnish.list to .varnish.list.bk
+    # we removed apt-transport-https so we mv varnish.list to varnish.list.save
     # so, if you exend sandinh/varnish you can install other packages more easily
-    mv /etc/apt/sources.list.d/varnish.list /etc/apt/sources.list.d/.varnish.list.bk
+    mv /etc/apt/sources.list.d/varnish.list /etc/apt/sources.list.d/varnish.list.save
 
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
