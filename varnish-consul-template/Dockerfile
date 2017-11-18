@@ -1,6 +1,6 @@
 FROM sandinh/varnish
 
-ARG CONSUL_TEMPLATE_VERSION=0.19.3
+ARG CONSUL_TEMPLATE_VERSION=0.19.4
 ARG BUILD_PACKAGES="wget"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
